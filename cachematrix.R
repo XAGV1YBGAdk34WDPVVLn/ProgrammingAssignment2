@@ -53,3 +53,33 @@ cacheSolve <- function(x, ...) {
 
     return(m)
 }
+
+# this function is used to run unit tests
+runTests <- function() {
+    # unit tests
+    a <- matrix(c(1,1,-1,2),2,2)
+    b <- makeCacheMatrix(a)
+    cat("Init\n")
+    print(b$get())
+    cat("\nInverse\n")
+    print(cacheSolve(b))
+    cat("\nCached\n")
+    print(cacheSolve(b))
+    b$setinverse(a)
+    cat("\nOriginal\n")
+    print(b$get())
+
+    cat("\n==========\n")
+
+    a <- matrix(c(2,2,3,2),2,2)
+    b <- makeCacheMatrix(a)
+    cat("Init\n")
+    print(b$get())
+    cat("\nInverse\n")
+    print(cacheSolve(b))
+    cat("\nCached\n")
+    print(cacheSolve(b))
+    b$setinverse(a)
+    cat("\nOriginal\n")
+    print(b$get())
+}
